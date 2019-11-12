@@ -1,5 +1,9 @@
 {
     "cSpell.words": [
+        "gbsg",
         "yoonak"
-    ]
+    ],
+    "python.pythonPath": "/home/m/.local/share/virtualenvs/yoonak-dFqxkXK3/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
