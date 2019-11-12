@@ -9,6 +9,7 @@ pylint = "*"
 [packages]
 django = "*"
 graphene-django = ">=2.0"
+django-exiffield = "*"
 
 [requires]
 python_version = "3.6"
