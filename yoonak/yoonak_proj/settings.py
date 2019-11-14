@@ -124,5 +124,5 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = BASE_DIR + STATIC_URL + 'images/'
 
 GRAPHENE = {
-    'SCHEMA': 'app.schema.schema' # Where your Graphene schema lives
+    'SCHEMA': 'reports.schema.schema' # Where your Graphene schema lives
 }
