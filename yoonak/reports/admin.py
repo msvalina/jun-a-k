@@ -2,9 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import ReportModel
+from .models import Report
 
-admin.site.register(ReportModel)
+admin.site.register(Report)
 
 #TODO Add django https://github.com/matthewwithanm/django-imagekit
 #TODO or some other way to Show Image on Django Admin

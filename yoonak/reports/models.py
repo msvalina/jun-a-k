@@ -13,7 +13,7 @@ def image_direcotry_path_uuid(instance, filename):
     ext = os.path.splitext(filename)[1]
     return 'uploads/{0}/{1}{2}'.format(year_month, str(uuid4())[-12:], ext)
 
-class ReportModel(models.Model):
+class Report(models.Model):
     """Model for reported images"""
     # TODO convert to jpg and resize to file size less then XX
 
