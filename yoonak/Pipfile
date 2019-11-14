@@ -12,6 +12,7 @@ pylint-django = "*"
 django = "*"
 graphene-django = ">=2.0"
 django-exiffield = "*"
+django-rest-framework = "*"
 
 [requires]
 python_version = "3.6"
