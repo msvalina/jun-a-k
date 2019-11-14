@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _ 
 
 from uuid import uuid4
 import datetime
@@ -16,18 +17,39 @@ class ReportModel(models.Model):
     """Model for reported images"""
     # TODO convert to jpg and resize to file size less then XX
 
-    created_at = models.DateTimeField('Created at', auto_now=True)
-    created_at_img = models.DateTimeField('Image created at')
-    # file will be saved to MEDIA_ROOT/uploads/2019/01/uuid.ext
-    image = models.ImageField(upload_to=image_direcotry_path_uuid)
-    description = models.CharField(max_length=500)
-    # Precission https://stackoverflow.com/a/30711177 up to 10 cm
-    lon = models.DecimalField(max_digits=9, decimal_places=6)
-    lat = models.DecimalField(max_digits=9, decimal_places=6)
+    created_at = models.DateTimeField(
+        'Created at',
+        auto_now=True,
+        )
+    created_at_img = models.DateTimeField(
+        'Image created at',
+        )
+    image = models.ImageField(
+        # file will be saved to MEDIA_ROOT/uploads/2019/01/uuid.ext
+        upload_to=image_direcotry_path_uuid, 
+        blank=True, # For now
+        null=True, # Let's set this to be not mandatory. 
+        )
+    description = models.CharField(
+        max_length=500,
+        )
+    lon = models.DecimalField(
+        # Precission https://stackoverflow.com/a/30711177 up to 10 cm
+        max_digits=9, 
+        decimal_places=6,
+        )
+    lat = models.DecimalField(
+        max_digits=9, 
+        decimal_places=6,
+        )
 
 
     class Meta:
         db_table = ''
         managed = True
-        verbose_name = 'Report Model'
-        verbose_name_plural = 'Reports Models'
+        verbose_name = _('Report')
+        verbose_name_plural = _('Reports')
+        ordering = ('-created_at', )
+
+    def __str__(self):
+        return 'Report {} (#{})'.format(self.created_at, self.pk)
