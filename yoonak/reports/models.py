@@ -23,6 +23,7 @@ class Report(models.Model):
         )
     created_at_img = models.DateTimeField(
         'Image created at',
+        auto_now=True,
         )
     image = models.ImageField(
         # file will be saved to MEDIA_ROOT/uploads/2019/01/uuid.ext

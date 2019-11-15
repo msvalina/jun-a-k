@@ -2,6 +2,7 @@ from graphene import Argument, Field, ID, ObjectType, Schema
 from graphene_django import DjangoConnectionField
 from .models import Report
 from .types import ReportType
+from .mutations import ReportCreate, ReportDelete
 
 class Query(ObjectType):
     reports = DjangoConnectionField(ReportType)
@@ -15,4 +16,8 @@ class Query(ObjectType):
     def resolve_report(root, info, **kwargs):
         return Report.objects.get(id=kwargs.get('id'))
 
-schema = Schema(query=Query)
+class Mutation(ObjectType):
+    report_create = ReportCreate.Field()
+    report_delete = ReportDelete.Field()
+
+schema = Schema(query=Query, mutation=Mutation)
