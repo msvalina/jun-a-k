@@ -33,16 +33,25 @@ class Report(models.Model):
         )
     description = models.CharField(
         max_length=500,
+        blank=True,
         )
     lon = models.DecimalField(
         # Precission https://stackoverflow.com/a/30711177 up to 10 cm
         max_digits=9, 
         decimal_places=6,
+        blank=True,
+        null=True,
         )
     lat = models.DecimalField(
         max_digits=9, 
         decimal_places=6,
+        blank=True,
+        null=True,
         )
+    location = models.CharField(
+        max_length=50,
+        blank=True,
+    )
 
 
     class Meta:
