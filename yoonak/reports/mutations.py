@@ -11,6 +11,7 @@ class ReportSerializer(serializers.ModelSerializer):
             'id',
             'created_at',
             'description',
+            'location',
             'lon',
             'lat',
         )
@@ -18,6 +19,7 @@ class ReportSerializer(serializers.ModelSerializer):
 class ReportInputType(InputObjectType):
     #created_at = DateTime()
     description = String()
+    location = String()
     lon = Float()
     lat = Float()
 

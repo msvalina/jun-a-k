@@ -8,6 +8,7 @@ class ReportType(DjangoObjectType):
             'id',
             'created_at',
             'description',
+            'location',
             'lon',
             'lat',
         )
