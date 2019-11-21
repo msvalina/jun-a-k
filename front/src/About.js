@@ -4,7 +4,7 @@ export const About = () => (
   <div>
     <h2>About Page</h2>
     <p>This is mostly about us.</p>
-    <p>Take a big fluffing crap 💩 human is washing you why halp oh the
+    <p>Take a big fluffing crap human is washing you why halp oh the
     horror flee scratch hiss bite. Sniff sniff bite the neighbor's bratty kid
     meow so jump on human and sleep on her all night long be long in the bed,
     purr in the morning and then give a bite to every human around for not

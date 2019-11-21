@@ -19,31 +19,15 @@ const Styles = styled.div`
 
 export const NavigationBar = () => (
   <Styles>
-    <Navbar expand="lg">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand href="/">Jun[a]K</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
-          <Nav.Item>
-            <Nav.Link>
-              <Link to="/">Home</Link>
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link>
-              <Link to="/about">About</Link>
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link>
-              <Link to="/contact">Contact</Link>
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link>
-              <Link to="/report">Report</Link>
-            </Nav.Link>
-          </Nav.Item>
+        <Nav className="mr-auto">
+            <Nav.Link eventKey="1" as={Link} to="/">Home</Nav.Link>
+            <Nav.Link eventKey="2" as={Link} to="/about">About</Nav.Link>
+            <Nav.Link eventKey="3" as={Link} to="/contact">Contact</Nav.Link>
+            <Nav.Link eventKey="4" as={Link} to="/report">Report</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
