@@ -13,7 +13,6 @@ django = "*"
 graphene-django = ">=2.0"
 django-exiffield = "*"
 django-rest-framework = "*"
-django-cors-headers = "*"
 django-filter = "*"
 
 [requires]
