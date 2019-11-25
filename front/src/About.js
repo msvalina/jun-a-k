@@ -1,6 +1,8 @@
 import React from 'react'
+import { Layout } from './components/Layout';
 
 export const About = () => (
+  <Layout>
   <div>
     <h2>About Page</h2>
     <p>This is mostly about us.</p>
@@ -16,4 +18,5 @@ export const About = () => (
     master of i, oooh damn dat dog. Need to chase tail mew and lick left leg
     for ninety minutes, still dirty.</p>
   </div>
+  </Layout>
 )

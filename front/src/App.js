@@ -5,7 +5,6 @@ import { About } from './About';
 import { Contact } from './Contact';
 import { NoMatch } from './NoMatch';
 import { NavigationBar } from './components/NavigationBar';
-import { Layout } from './components/Layout';
 import ReportCamera from './components/ReportCamera';
 
 class App extends React.Component {
@@ -14,15 +13,13 @@ class App extends React.Component {
       <React.Fragment>
         <Router>
           <NavigationBar />
-            <Route exact path="/" component={Home} />
-            <Layout>
             <Switch>
+              <Route exact path="/" component={Home} />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
               <Route path="/report" component={ReportCamera} />
               <Route component={NoMatch} />
             </Switch>
-            </Layout>
         </Router>
       </React.Fragment>
     );

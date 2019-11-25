@@ -1,7 +1,8 @@
 import React from 'react';
+import { Layout } from './components/Layout';
 
 export const NoMatch = () => (
-  <div>
-    <h2>No Match</h2>
-  </div>
+  <Layout>
+    <h2>Page not found </h2>
+  </Layout>
 )

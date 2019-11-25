@@ -1,6 +1,7 @@
 import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { Layout } from './Layout';
 import ImagePreview from './ImagePreview'; // source code : ./src/demo/AppWithImagePreview/ImagePreview
 import Camera, {FACING_MODES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
@@ -22,6 +23,7 @@ class ReportCamera extends React.Component{
 
     render() {
         return (
+            <Layout>
             <Row>
                 <Col md={6}>
                     <div className="photoApp">
@@ -39,6 +41,7 @@ class ReportCamera extends React.Component{
                     </div>
                 </Col>
             </Row>
+            </Layout>
         );
     }
 }

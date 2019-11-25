@@ -1,6 +1,8 @@
 import React from 'react'
+import { Layout } from './components/Layout';
 
 export const Contact = () => (
+  <Layout>
   <div>
     <h2>Contact Us</h2>
     <p>Stare at ceiling lay on arms while you're using the keyboard so this
@@ -9,4 +11,5 @@ export const Contact = () => (
     ball of string sniff catnip and act crazy throw down all the stuff in the
     kitchen hide from vacuum cleaner.</p>
   </div>
+  </Layout>
 )
