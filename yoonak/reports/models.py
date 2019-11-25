@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _ 
+from django.utils.translation import ugettext_lazy as _
 
 from uuid import uuid4
 import datetime
@@ -27,9 +27,9 @@ class Report(models.Model):
         )
     image = models.ImageField(
         # file will be saved to MEDIA_ROOT/uploads/2019/01/uuid.ext
-        upload_to=image_direcotry_path_uuid, 
+        upload_to=image_direcotry_path_uuid,
         blank=True, # For now
-        null=True, # Let's set this to be not mandatory. 
+        null=True, # Let's set this to be not mandatory.
         )
     description = models.CharField(
         max_length=500,
@@ -37,13 +37,13 @@ class Report(models.Model):
         )
     lon = models.DecimalField(
         # Precission https://stackoverflow.com/a/30711177 up to 10 cm
-        max_digits=9, 
+        max_digits=9,
         decimal_places=6,
         blank=True,
         null=True,
         )
     lat = models.DecimalField(
-        max_digits=9, 
+        max_digits=9,
         decimal_places=6,
         blank=True,
         null=True,
