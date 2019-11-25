@@ -28,6 +28,7 @@ export const NavigationBar = () => (
             <Nav.Link eventKey="2" as={Link} to="/about">About</Nav.Link>
             <Nav.Link eventKey="3" as={Link} to="/contact">Contact</Nav.Link>
             <Nav.Link eventKey="4" as={Link} to="/report">Report</Nav.Link>
+            <Nav.Link eventKey="5" as={Link} to="/reports">Reports</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

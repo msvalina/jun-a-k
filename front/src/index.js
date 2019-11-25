@@ -8,7 +8,6 @@ import { ApolloProvider } from '@apollo/react-hooks';
 // import gql from 'graphql-tag';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
