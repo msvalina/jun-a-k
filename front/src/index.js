@@ -8,7 +8,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 // import gql from 'graphql-tag';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import App from './App';
+import App from './pages';
 import * as serviceWorker from './serviceWorker';
 
 const cache = new InMemoryCache();

@@ -10,9 +10,9 @@ import {
   Contact,
   NoMatch,
   NavigationBar
-} from './components'
+} from '../components'
 
-import ReportCamera from './pages/ReportCamera';
+import ReportCamera from './ReportCamera';
 
 class App extends React.Component {
   render() {
