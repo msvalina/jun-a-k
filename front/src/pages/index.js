@@ -12,6 +12,7 @@ import {
   NavigationBar
 } from '../components'
 
+import Reports from './Reports';
 import ReportCamera from './ReportCamera';
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
           <Route path="/report" component={ReportCamera} />
+          <Route path="/reports" component={Reports} />
           <Route component={NoMatch} />
         </Switch>
       </Router>
