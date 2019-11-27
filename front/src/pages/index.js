@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
 } from 'react-router-dom';
 import {
   Home,
@@ -13,6 +13,7 @@ import {
 } from '../components'
 
 import Reports from './Reports';
+import Report from './Report';
 import ReportCamera from './ReportCamera';
 
 export default function App() {
@@ -24,8 +25,9 @@ export default function App() {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
-          <Route path="/report" component={ReportCamera} />
+          <Route path="/photo" component={ReportCamera} />
           <Route path="/reports" component={Reports} />
+          <Route path="/report/:reportId" children={<Report />} />
           <Route component={NoMatch} />
         </Switch>
       </Router>

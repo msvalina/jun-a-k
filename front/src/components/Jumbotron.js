@@ -46,7 +46,7 @@ export const Jumbotron = () => (
         <p>Reporting one wild dump at a time!</p>
         <p>Get Bitcoins for it!</p>
         <Button size="lg" variant="dark" className="btn">
-        <Nav.Link as={Link} to="/report" className="btn-dark">Report</Nav.Link>
+        <Nav.Link as={Link} to="/photo" className="btn-dark">Report</Nav.Link>
         </Button>
       </Container>
     </Jumbo>

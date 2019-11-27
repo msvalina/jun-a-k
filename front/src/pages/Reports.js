@@ -48,7 +48,7 @@ export default function Reports() {
         {data.reports &&
           data.reports.edges &&
           data.reports.edges.map(edge => (
-            <Card style={{ width: "18rem" }}>
+            <Card key={edge.node.id} style={{ width: "18rem" }}>
               <Card.Body>
                 <Card.Title>
                   {edge.node.location} {edge.node.id}
