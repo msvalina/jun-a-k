@@ -9,7 +9,7 @@ import {
   About,
   Contact,
   NoMatch,
-  NavigationBar
+  NavBarFooter,
 } from '../components'
 
 import Reports from './Reports';
@@ -20,7 +20,6 @@ export default function App() {
   return (
     <Fragment>
       <Router>
-        <NavigationBar />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
@@ -30,6 +29,7 @@ export default function App() {
           <Route path="/report/:reportId" children={<Report />} />
           <Route component={NoMatch} />
         </Switch>
+        <NavBarFooter/>
       </Router>
     </Fragment>
   )
