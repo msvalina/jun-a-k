@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, Container } from "react-bootstrap";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -25,22 +25,31 @@ const Styles = styled.div`
       color: white;
     }
   }
+
+  /* set footer navbar to not hide main content */
+  .phantom {
+    display: block;
+    padding: 20px;
+    height: 100px;
+    width: 100%;
+  }
+
 `;
 
 export const NavBarFooter = () => (
   <Styles>
+    <Container className="phantom"/>
     <Navbar
       fixed="bottom"
       sticky="bottom"
-      collapseOnSelect
-      expand="lg"
       bg="dark"
       variant="dark"
+      className="justify-content-center"
     >
-      <Navbar.Brand href="/">
+      <Nav className="justify-content-center">
+        <Nav.Link eventKey="1" as={Link} to="/">
         <FontAwesomeIcon icon={faHome} /> Jun[a]K
-      </Navbar.Brand>
-      <Nav className="mr-auto">
+        </Nav.Link>
         <Nav.Link eventKey="2" as={Link} to="/about">
           <FontAwesomeIcon icon={faUsers} /> About
         </Nav.Link>
