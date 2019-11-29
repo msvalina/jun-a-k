@@ -30,15 +30,20 @@ const Styles = styled.div`
   .phantom {
     display: block;
     padding: 20px;
-    height: 100px;
+    height: 200px;
     width: 100%;
   }
 
+  .centering {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const NavBarFooter = () => (
   <Styles>
-    <Container className="phantom"/>
+    <Container className="phantom" />
     <Navbar
       fixed="bottom"
       sticky="bottom"
@@ -48,16 +53,36 @@ export const NavBarFooter = () => (
     >
       <Nav className="justify-content-center">
         <Nav.Link eventKey="1" as={Link} to="/">
-        <FontAwesomeIcon icon={faHome} /> Jun[a]K
+          <div className="centering">
+          <div>
+            <FontAwesomeIcon icon={faHome} className="fa-3x" />{" "}
+          </div>
+          <div>Jun[a]K</div>
+          </div>
         </Nav.Link>
         <Nav.Link eventKey="2" as={Link} to="/about">
-          <FontAwesomeIcon icon={faUsers} /> About
+          <div className="centering">
+          <div>
+            <FontAwesomeIcon icon={faUsers} className="fa-3x" />{" "}
+          </div>
+          <div>About</div>
+          </div>
         </Nav.Link>
         <Nav.Link eventKey="4" as={Link} to="/photo">
-          <FontAwesomeIcon icon={faCamera} /> Photo
+          <div className="centering">
+          <div>
+            <FontAwesomeIcon icon={faCamera} className="fa-3x" />
+          </div>
+          <div>Photo</div>
+          </div>
         </Nav.Link>
         <Nav.Link eventKey="5" as={Link} to="/reports">
-          <FontAwesomeIcon icon={faPlusCircle} /> Reports
+          <div className="centering">
+          <div>
+            <FontAwesomeIcon icon={faPlusCircle} className="fa-3x" />
+          </div>
+          <div>Reports</div>
+          </div>
         </Nav.Link>
       </Nav>
     </Navbar>

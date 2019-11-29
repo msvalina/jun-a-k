@@ -6,19 +6,20 @@ export const PageContainer = props => {
   return (
     <Fragment>
       <Padding>
-        <Container>{props.children}</Container>
+        <Container className="cont">{props.children}</Container>
       </Padding>
     </Fragment>
   );
 };
 
 const Padding = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 100%;
-  max-width: 600;
-  margin: 0 auto; */
   padding: 21;
   padding-bottom: 45;
+  .cont {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    text-align: left;
+  }
 `;

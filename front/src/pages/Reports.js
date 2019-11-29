@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
+import styled from "styled-components";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
@@ -41,11 +42,11 @@ export default function Reports() {
   }
 
   return (
-      <Fragment>
+      <CardStyle>
         {data.reports &&
           data.reports.edges &&
           data.reports.edges.map(edge => (
-            <Card key={edge.node.id} style={{ width: "18rem" }}>
+            <Card key={edge.node.id} bg="dark" className="card-extra">
               <Card.Body>
                 <Card.Title>
                   {edge.node.location} {edge.node.id}
@@ -83,6 +84,23 @@ export default function Reports() {
               Load More
             </Button>
           )}
-      </Fragment>
+      </CardStyle>
   );
 }
+
+const CardStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  width: 550px;
+  flex-grow: 1;
+
+  .card-extra {
+    margin-bottom: 30px;
+    width: 100%;
+    /* width: 600px; */
+  }
+`;
+
