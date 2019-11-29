@@ -6,8 +6,6 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 
-import { Layout } from "../components";
-
 const GET_REPORTS = gql`
   query reportsList($after: String) {
     reports(first: 7, after: $after) {
@@ -43,7 +41,6 @@ export default function Reports() {
   }
 
   return (
-    <Layout>
       <Fragment>
         {data.reports &&
           data.reports.edges &&
@@ -87,6 +84,5 @@ export default function Reports() {
             </Button>
           )}
       </Fragment>
-    </Layout>
   );
 }

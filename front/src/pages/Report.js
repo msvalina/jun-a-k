@@ -7,7 +7,6 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 
-import { Layout } from "../components";
 
 export const GET_REPORT_DETAILS = gql`
   query ReportDetails($reportId: ID!) {
@@ -46,7 +45,6 @@ export default function Report() {
     );
   }
   return (
-    <Layout>
       <Fragment>
         {data.report && (
           <Card key={data.report.id} style={{ width: "18rem" }}>
@@ -60,6 +58,5 @@ export default function Report() {
           </Card>
         )}
       </Fragment>
-    </Layout>
   );
 }

@@ -1,13 +1,7 @@
-import React from 'react';
-import {
-  Jumbotron as Jumbo,
-  Container,
-  Button,
-  Nav,
- } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import heroImage from '../assets/images/boy-junak-big.jpeg';
+import React, { Fragment } from "react";
+import { Jumbotron as Jumbo } from "react-bootstrap";
+import styled from "styled-components";
+import heroImage from "../assets/images/boy-junak-big.jpeg";
 
 const Styles = styled.div`
   .jumbo {
@@ -30,25 +24,24 @@ const Styles = styled.div`
     z-index: -1;
   }
 
-  .btn {
+  .bring-to-front {
     z-index: 1;
   }
 `;
 
+const Bar = styled.div`
+  flex-shrink: 0;
+  height: 10px;
+`;
 
-export const Jumbotron = () => (
-  <Styles>
-    <Jumbo fluid className="jumbo">
-      <div className="overlay"></div>
-      <Container>
-        <h1>Be a Jun[a]k Hero!</h1>
-        <p>Save the planet!</p>
-        <p>Reporting one wild dump at a time!</p>
-        <p>Get Bitcoins for it!</p>
-        <Button size="lg" variant="dark" className="btn">
-        <Nav.Link as={Link} to="/photo" className="btn-dark">Report</Nav.Link>
-        </Button>
-      </Container>
-    </Jumbo>
-  </Styles>
-)
+export const Jumbotron = props => (
+  <Fragment>
+    <Bar className="bg-dark" />
+    <Styles>
+      <Jumbo fluid={true} className="jumbo">
+        <div className="overlay" />
+        <div className="bring-to-front">{props.children}</div>
+      </Jumbo>
+    </Styles>
+  </Fragment>
+);
