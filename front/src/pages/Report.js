@@ -1,8 +1,9 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
+import styled from "styled-components";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
@@ -45,9 +46,9 @@ export default function Report() {
     );
   }
   return (
-      <Fragment>
+      <CardStyle>
         {data.report && (
-          <Card key={data.report.id} style={{ width: "18rem" }}>
+          <Card key={data.report.id} bg="dark" className="card-extra">
             <Card.Body>
               <Card.Title>
                 {data.report.location} {data.report.id}
@@ -57,6 +58,22 @@ export default function Report() {
             </Card.Body>
           </Card>
         )}
-      </Fragment>
+      </CardStyle>
   );
 }
+
+const CardStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  width: 550px;
+  flex-grow: 1;
+
+  .card-extra {
+    margin-bottom: 30px;
+    width: 100%;
+    /* width: 600px; */
+  }
+`;
