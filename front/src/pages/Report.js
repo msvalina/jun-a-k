@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 
+import  DeleteReport  from '../containers/DeleteReport';
 
 export const GET_REPORT_DETAILS = gql`
   query ReportDetails($reportId: ID!) {
@@ -30,7 +31,7 @@ export default function Report() {
   if (loading)
     return (
       <Spinner animation="border" role="status">
-        <span className="sr-only"> Loading...</span>
+        <span className="sr-only">Loading...</span>
       </Spinner>
     );
   if (error) {
@@ -39,8 +40,7 @@ export default function Report() {
       <>
         <br />
         <br />
-        <p>some paragraph</p>
-        <p>{reportId}</p>
+        <p>Report ID: {reportId}</p>
         <p>ERROR </p>
       </>
     );
@@ -55,6 +55,7 @@ export default function Report() {
               </Card.Title>
               <Card.Text>{data.report.description}</Card.Text>
               <Button variant="light">Do something</Button>
+              <DeleteReport reportId={data.report.id} />
             </Card.Body>
           </Card>
         )}
