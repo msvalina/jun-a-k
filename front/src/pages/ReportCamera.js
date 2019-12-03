@@ -11,9 +11,17 @@ class ReportCamera extends React.Component{
         this.state = { dataUri: null };
         this.onTakePhotoAnimationDone = this.onTakePhotoAnimationDone.bind(this);
     }
+    componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+        window.scrollTo(0, 0);
+        }
+    }
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
     onTakePhotoAnimationDone (dataUri) {
-        console.log("Photo taken")
-        console.log(dataUri.slice(-20))
+        console.log("Photo taken");
+        console.log(dataUri.slice(-20));
         this.setState({ dataUri });
     }
     onCameraStop() {
