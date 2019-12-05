@@ -25,7 +25,8 @@ SECRET_KEY = '%upy)s5&w^5go*-u7##gbsg$&h9)uc@4fk)!r6gy04g-$3fd69'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Specify hosts in production
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'graphene_django',
     'reports.apps.ReportsConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

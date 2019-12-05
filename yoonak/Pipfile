@@ -7,13 +7,16 @@ verify_ssl = true
 pylint = "*"
 ipython = "*"
 pylint-django = "*"
+werkzeug = "*"
+pyopenssl = "*"
 
 [packages]
-django = "*"
+django = ">=2.2.7"
 graphene-django = ">=2.0"
 django-exiffield = "*"
 django-rest-framework = "*"
 django-filter = "*"
+django-extensions = "*"
 
 [requires]
 python_version = "3.6"

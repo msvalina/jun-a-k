@@ -33,3 +33,37 @@ Report wild garbage be Yoonak
 6. Send report
 7. Leave us mail to collect reward
 
+
+Development server setup
+-------------------------
+
+Create self signed ssl for your local domain in my case th.loca
+
+```shell
+openssl req -x509 -out th.loc.crt -keyout th.loc.key \
+  -newkey rsa:2048 -nodes -sha256 \
+  -subj '/CN=th.loc' -extensions EXT -config <( \
+   printf "[dn]\nCN=th.loc\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:th.loc\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+
+```
+
+Make PEM file from key and crt
+
+```shell
+cat th.loc.key th.loc.crt > th.loc.pem
+```
+
+Change package.json to point webpack to our pem ssl cert
+
+```shell
+"start": "HTTPS=true react-scripts start",
+"prestart": "rm ./node_modules/webpack-dev-server/ssl/server.pem && cp -f ./certs/th.loc.pem ./node_modules/webpack-dev-server/ssl/server.pem",
+```
+
+Run servers with
+
+```shell
+yarn start
+and
+python manage.py runserver_plus --cert-file ../certs/th.loc.crt --key-file ../certs/th.loc.key 0.0.0.0:8000
+```

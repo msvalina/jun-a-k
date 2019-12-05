@@ -24,7 +24,8 @@
     "styled-components": "^4.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "HTTPS=true react-scripts start",
+    "prestart": "rm ./node_modules/webpack-dev-server/ssl/server.pem && cp -f ../certs/th.loc.pem ./node_modules/webpack-dev-server/ssl/server.pem",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

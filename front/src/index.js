@@ -13,7 +13,7 @@ import * as serviceWorker from './serviceWorker';
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
-    uri: "http://localhost:8000/graphql/",
+    uri: "https://th.loc:8000/graphql/",
 });
 const client = new ApolloClient({
     cache,
