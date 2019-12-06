@@ -55,7 +55,7 @@ export const NavBarFooter = () => (
         <Nav.Link eventKey="1" as={Link} to="/">
           <div className="centering">
           <div>
-            <FontAwesomeIcon icon={faHome} className="fa-3x" />{" "}
+            <FontAwesomeIcon icon={faHome} className="fa-2x" />
           </div>
           <div>Jun[a]K</div>
           </div>
@@ -63,7 +63,7 @@ export const NavBarFooter = () => (
         <Nav.Link eventKey="2" as={Link} to="/about">
           <div className="centering">
           <div>
-            <FontAwesomeIcon icon={faUsers} className="fa-3x" />{" "}
+            <FontAwesomeIcon icon={faUsers} className="fa-2x" />
           </div>
           <div>About</div>
           </div>
@@ -71,7 +71,7 @@ export const NavBarFooter = () => (
         <Nav.Link eventKey="4" as={Link} to="/photo">
           <div className="centering">
           <div>
-            <FontAwesomeIcon icon={faCamera} className="fa-3x" />
+            <FontAwesomeIcon icon={faCamera} className="fa-2x" />
           </div>
           <div>Photo</div>
           </div>
@@ -79,7 +79,7 @@ export const NavBarFooter = () => (
         <Nav.Link eventKey="5" as={Link} to="/reports">
           <div className="centering">
           <div>
-            <FontAwesomeIcon icon={faPlusCircle} className="fa-3x" />
+            <FontAwesomeIcon icon={faPlusCircle} className="fa-2x" />
           </div>
           <div>Reports</div>
           </div>
