@@ -126,6 +126,9 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = BASE_DIR + STATIC_URL + 'images/'
 
+# https://docs.djangoproject.com/en/2.2/howto/static-files/#serving-uploaded-files-in-development
+MEDIA_URL = '/media/'
+
 GRAPHENE = {
     'SCHEMA': 'reports.schema.schema' # Where your Graphene schema lives
 }

@@ -9,6 +9,8 @@ import os
 
 
 def image_direcotry_path_uuid(instance, filename):
+    if 'default-report-picture.png' in filename:
+        return 'uploads/default-report-picture.png'
     year_month = datetime.date.today().strftime("%Y/%m")
     ext = os.path.splitext(filename)[1]
     return 'uploads/{0}/{1}{2}'.format(year_month, str(uuid4())[-12:], ext)

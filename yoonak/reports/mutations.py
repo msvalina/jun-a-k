@@ -1,3 +1,5 @@
+import base64
+from django.core.files.base import ContentFile
 from graphene import Boolean, Field, ID, String, DateTime, Float
 from graphene import InputObjectType, Mutation
 from rest_framework import serializers
@@ -10,6 +12,7 @@ class ReportSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'created_at',
+            'image',
             'description',
             'location',
             'lon',
@@ -19,6 +22,7 @@ class ReportSerializer(serializers.ModelSerializer):
 class ReportInputType(InputObjectType):
     #created_at = DateTime()
     description = String()
+    image = String()
     location = String()
     lon = Float()
     lat = Float()
@@ -30,6 +34,9 @@ class ReportCreate(Mutation):
 
     @classmethod
     def mutate(cls, root, info, **data):
+        decoded_image = base64_file(data['input']['image'], "foobar")
+        data['input'].pop("image", None)
+        data['input']['image'] = decoded_image
         serializer = ReportSerializer(data=data.get('input'))
         serializer.is_valid(raise_exception=True)
 
@@ -47,3 +54,13 @@ class ReportDelete(Mutation):
         report.delete()
 
         return ReportDelete(ok=True)
+
+def base64_file(data, name=None):
+    # TODO: This should be regex validation
+    if not ';base64,' or not 'data:' in data:
+        return None
+    _format, _img_str = data.split(';base64,')
+    _name, ext = _format.split('/')
+    if not name:
+        name = _name.split(":")[-1]
+    return ContentFile(base64.b64decode(_img_str), name='{}.{}'.format(name, ext))

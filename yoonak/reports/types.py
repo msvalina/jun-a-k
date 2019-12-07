@@ -6,6 +6,7 @@ class ReportType(DjangoObjectType):
         model = Report
         only_fields = (
             'id',
+            'image',
             'created_at',
             'description',
             'location',
