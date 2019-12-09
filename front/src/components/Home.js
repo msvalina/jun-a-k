@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { ReportForm } from './ReportForm';
+import ReportForm from './ReportForm';
 import styled from "styled-components";
 
 const HeaderStyle = styled.div`
