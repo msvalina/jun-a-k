@@ -13,7 +13,7 @@ import {
 const Styles = styled.div`
   .navbar {
     background-color: #222;
-    padding: 20px;
+    padding: 5px;
   }
 
   a,
