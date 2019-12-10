@@ -80,14 +80,12 @@ export default function ReportForm(props) {
           <Form.Label className="label">Or </Form.Label>
           {cameraPhotoView}
           <br />
-          <Form.Label className="label">
-            Anything you want to say about it?
-          </Form.Label>
+          <br />
           <Form.Control
             size="lg"
             as="textarea"
             className="form-textarea"
-            placeholder="Enter description"
+            placeholder="Anything you want to say about it?"
             value={description}
             onChange={({ target }) => setDescription(target.value)}
           />
@@ -95,19 +93,19 @@ export default function ReportForm(props) {
             We'll read your message. Thank you for writing.
           </Form.Text>
           <br />
-          <Form.Label className="label">Tell us location</Form.Label>
+          <br />
           <Form.Control
             size="lg"
             as="input"
-            placeholder="Enter Location"
+            placeholder="Tell us location"
             value={location}
             onChange={({ target }) => setLocation(target.value)}
           />
           <Form.Text className="text-muted">
-            Or give permission so we can use or gps location.
+            Or give permission so we can use gps location.
           </Form.Text>
           <br />
-          <Form.Label className="label">Report and be Junak</Form.Label>
+          <br />
         </Form.Group>
         <Button size="lg" variant="light" type="submit">
           Send
