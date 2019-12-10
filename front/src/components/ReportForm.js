@@ -29,8 +29,6 @@ export default function ReportForm() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log({ location, description });
-    console.log(data);
     createReport({
     variables: {
       location,
@@ -40,6 +38,11 @@ export default function ReportForm() {
       description
     }
    });
+   setLocation("");
+   setLon(null);
+   setLat(null);
+   setImage("");
+   setDescription("");
   };
 
   return (
