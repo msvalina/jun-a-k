@@ -8,9 +8,9 @@ const Styles = styled.div`
     background: url(${heroImage}) no-repeat fixed bottom;
     background-size: cover;
     color: #efefef;
-    height: 1600px;
     position: relative;
     z-index: 0;
+    margin-bottom: 82px;
   }
 
   .overlay {
