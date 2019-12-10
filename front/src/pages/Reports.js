@@ -8,6 +8,8 @@ import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 import { LinkContainer } from "react-router-bootstrap";
 
+import heroImageSmall from "../assets/images/boy-junak-small.jpeg";
+
 const GET_REPORTS = gql`
   query reportsList($after: String) {
     reports(first: 7, after: $after) {
@@ -20,6 +22,7 @@ const GET_REPORTS = gql`
       edges {
         node {
           id
+          image
           createdAt
           description
           location
@@ -31,6 +34,10 @@ const GET_REPORTS = gql`
 
 export default function Reports() {
   const { data, loading, error, fetchMore } = useQuery(GET_REPORTS);
+
+  const url = window.API_MEDIA_URL;
+  const defaultImage = heroImageSmall;
+
   if (loading)
     return (
       <Spinner animation="border" role="status">
@@ -50,6 +57,7 @@ export default function Reports() {
           <Card key={edge.node.id} bg="dark" className="card-extra">
             <LinkContainer exact to={`/report/${edge.node.id}`}>
               <Card.Body>
+                <Card.Img variant="top" src={edge.node.image ? url + edge.node.image : defaultImage } />
                 <Card.Title>
                   {edge.node.location} {edge.node.id}
                 </Card.Title>

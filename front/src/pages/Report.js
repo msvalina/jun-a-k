@@ -10,10 +10,13 @@ import Spinner from "react-bootstrap/Spinner";
 
 import  DeleteReport  from '../containers/DeleteReport';
 
+import heroImageSmall from "../assets/images/boy-junak-small.jpeg";
+
 export const GET_REPORT_DETAILS = gql`
   query ReportDetails($reportId: ID!) {
     report(id: $reportId) {
       id
+      image
       createdAt
       description
       location
@@ -23,6 +26,9 @@ export const GET_REPORT_DETAILS = gql`
 
 export default function Report() {
   let { reportId } = useParams();
+
+  const url = window.API_MEDIA_URL;
+  const defaultImage = heroImageSmall;
 
   const { data, loading, error } = useQuery(GET_REPORT_DETAILS, {
     variables: { reportId }
@@ -49,6 +55,7 @@ export default function Report() {
       <CardStyle>
         {data.report && (
           <Card key={data.report.id} bg="dark" className="card-extra">
+            <Card.Img variant="top" src={data.report.image ? url + data.report.image : defaultImage} />
             <Card.Body>
               <Card.Title>
                 {data.report.location} {data.report.id}
