@@ -21,8 +21,8 @@ export const Home = props => {
       <HeaderStyle>
         <h3>Save the planet!<span role="img" aria-label="earth africa">🌍</span></h3>
         <h3>Report one wild dump at a time<span role="img" aria-label="heart">💗</span></h3>
-        <h4>We will take care of it<span role="img" aria-label="weight-lifter">🏋️</span></h4>
-        <h4>Do you know any wild dump location?</h4>
+        <h3>We will take care of it<span role="img" aria-label="weight-lifter">🏋️</span></h3>
+        <h3>Do you know any wild dump location?</h3>
       </HeaderStyle>
       <FormStyle>
         {props.location.state && props.location.state.cameraPhoto ? (

@@ -11,13 +11,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 import App from './pages';
 import * as serviceWorker from './serviceWorker';
 
-window.API_MEDIA_URL = "https://localhost:8000/media/"
-//window.API_MEDIA_URL = "https://th.loc:8000/media/"
+// window.API_MEDIA_URL = "https://localhost:8000/media/"
+window.API_MEDIA_URL = "https://th.loc:8000/media/"
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
-    uri: "https://localhost:8000/graphql/",
-    //uri: "https://th.loc:8000/graphql/",
+    // uri: "https://localhost:8000/graphql/",
+    uri: "https://th.loc:8000/graphql/",
 });
 const client = new ApolloClient({
     cache,
