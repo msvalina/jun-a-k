@@ -5,19 +5,19 @@ import Form from "react-bootstrap/Form";
 import styled from "styled-components";
 import { LinkContainer } from "react-router-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera, } from "@fortawesome/free-solid-svg-icons";
-import { CREATE_REPORT } from '../containers/CreateReport';
-import { UploadButton as Upload } from './UploadButton';
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { CREATE_REPORT } from "../containers/CreateReport";
+import { UploadButton as Upload } from "./UploadButton";
 
-
-export default function ReportForm() {
+export default function ReportForm(props) {
   const [location, setLocation] = useState("");
   const [lon, setLon] = useState(null);
   const [lat, setLat] = useState(null);
-  const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState(props.cameraPhoto);
 
-  const [createReport, { data }] = useMutation(CREATE_REPORT, {
+  //const [createReport, { data }] = useMutation(CREATE_REPORT, {
+  const [createReport] = useMutation(CREATE_REPORT, {
     variables: {
       location,
       lon,
@@ -30,20 +30,41 @@ export default function ReportForm() {
   const handleSubmit = event => {
     event.preventDefault();
     createReport({
-    variables: {
-      location,
-      lon,
-      lat,
-      image,
-      description
-    }
-   });
-   setLocation("");
-   setLon(null);
-   setLat(null);
-   setImage("");
-   setDescription("");
+      variables: {
+        location,
+        lon,
+        lat,
+        image,
+        description
+      }
+    });
+    setLocation("");
+    setLon(null);
+    setLat(null);
+    setImage("");
+    setDescription("");
   };
+
+  let cameraPhotoView;
+  if (props.cameraPhoto) {
+    cameraPhotoView = (
+      <div>
+      <br />
+      <img src={props.cameraPhoto} alt="preview" width="300px" />
+      </div>
+    );
+  } else {
+    cameraPhotoView = (
+      <LinkContainer to="/photo">
+        <div className="centering">
+          <FontAwesomeIcon icon={faCamera} className="fa-3x" />
+          <Button size="lg" variant="light" type="">
+            Take a Picture
+          </Button>
+        </div>
+      </LinkContainer>
+    );
+  }
 
   return (
     <FormStyle>
@@ -51,17 +72,13 @@ export default function ReportForm() {
         <Form.Group className="forms" controlId="formDescription">
           <Form.Label className="label">Send us Photo</Form.Label>
           <br />
-          <Upload label="Upload Image" onDone={(fileInfo) => setImage(fileInfo.base64)}/>
+          <Upload
+            label="Upload Image"
+            onDone={fileInfo => setImage(fileInfo.base64)}
+          />
           <br />
           <Form.Label className="label">Or </Form.Label>
-          <LinkContainer to="/photo">
-            <div className="centering">
-              <FontAwesomeIcon icon={faCamera} className="fa-3x" />
-              <Button size="lg" variant="light" type="">
-                Take a Picture
-              </Button>
-            </div>
-          </LinkContainer>
+          {cameraPhotoView}
           <br />
           <Form.Label className="label">
             Anything you want to say about it?
@@ -152,4 +169,3 @@ const FormStyle = styled.div`
     /* hi-res laptops and desktops */
   }
 `;
-

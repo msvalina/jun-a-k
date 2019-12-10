@@ -1,24 +1,36 @@
 import React, { Fragment } from "react";
-import ReportForm from './ReportForm';
+import ReportForm from "./ReportForm";
 import styled from "styled-components";
 
 const HeaderStyle = styled.div`
-  h3,h4 {
-    padding-top: 25px !important;
-    padding-bottom: 25px !important;
+  h3,
+  h4 {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
     text-align: center;
   }
 `;
+const FormStyle = styled.div`
+  padding-top: 50px !important;
+`;
 
-export const Home = () => (
-  <Fragment>
-    <h1>Be Jun[a]k Hero</h1>
-    <HeaderStyle>
-      <h3>Save the planet!</h3>
-      <h3>Report one wild dump at a time</h3>
-      <h4>We will take care of it</h4>
-      <h4>Do you know any wild dump location?</h4>
-    </HeaderStyle>
-    <ReportForm />
-  </Fragment>
-);
+export const Home = props => {
+  return (
+    <Fragment>
+      <h1>Be Jun[a]k Hero<span role="img" aria-label="superhero">🦸</span> </h1>
+      <HeaderStyle>
+        <h3>Save the planet!<span role="img" aria-label="earth africa">🌍</span></h3>
+        <h3>Report one wild dump at a time<span role="img" aria-label="heart">💗</span></h3>
+        <h4>We will take care of it<span role="img" aria-label="weight-lifter">🏋️</span></h4>
+        <h4>Do you know any wild dump location?</h4>
+      </HeaderStyle>
+      <FormStyle>
+        {props.location.state && props.location.state.cameraPhoto ? (
+          <ReportForm cameraPhoto={props.location.state.cameraPhoto} />
+        ) : (
+          <ReportForm />
+        )}
+      </FormStyle>
+    </Fragment>
+  );
+};
