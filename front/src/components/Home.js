@@ -3,6 +3,11 @@ import ReportForm from "./ReportForm";
 import styled from "styled-components";
 
 const HeaderStyle = styled.div`
+  h1 {
+    padding-bottom: 50px !important;
+    text-align: center;
+  }
+
   h3,
   h4 {
     padding-top: 50px !important;
@@ -17,8 +22,8 @@ const FormStyle = styled.div`
 export const Home = props => {
   return (
     <Fragment>
-      <h1>Be Jun[a]k Hero<span role="img" aria-label="superhero">🦸</span> </h1>
       <HeaderStyle>
+        <h1>Be Jun[a]k Hero<span role="img" aria-label="superhero">🦸</span> </h1>
         <h3>Save the planet!<span role="img" aria-label="earth africa">🌍</span></h3>
         <h3>Report one wild dump at a time<span role="img" aria-label="heart">💗</span></h3>
         <h3>We will take care of it<span role="img" aria-label="weight-lifter">🏋️</span></h3>
