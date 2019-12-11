@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { CREATE_REPORT } from "../containers/CreateReport";
 import { UploadButton as Upload } from "./UploadButton";
+import Geolocation from "react-geolocation";
 
 export default function ReportForm(props) {
   const [location, setLocation] = useState("");
@@ -49,8 +50,8 @@ export default function ReportForm(props) {
   if (props.cameraPhoto) {
     cameraPhotoView = (
       <div>
-      <br />
-      <img src={props.cameraPhoto} alt="preview" width="300px" />
+        <br />
+        <img src={props.cameraPhoto} alt="preview" width="300px" />
       </div>
     );
   } else {
@@ -70,7 +71,7 @@ export default function ReportForm(props) {
     <FormStyle>
       <Form className="centering " onSubmit={handleSubmit}>
         <Form.Group className="forms" controlId="formDescription">
-          <Form.Label className="label">Send us Photo</Form.Label>
+          <Form.Label className="label">Send us photo</Form.Label>
           <br />
           <Upload
             label="Upload Image"
@@ -104,6 +105,35 @@ export default function ReportForm(props) {
           <Form.Text className="text-muted">
             Or give permission so we can use gps location.
           </Form.Text>
+          <br />
+          <br />
+          <Geolocation
+            lazy
+            onSuccess={( position ) => { setLat(position.coords.latitude); setLon(position.coords.longitude); }}
+            render={({
+              fetchingPosition,
+              position: { coords: { latitude, longitude } = {} } = {},
+              error,
+              getCurrentPosition
+            }) => (
+              <div>
+                <Form.Label className="label">
+                  Click here to send us
+                </Form.Label>
+                <br />
+                <div className="centering">
+                  <Button size="lg" variant="light" onClick={getCurrentPosition}>
+                    GPS Coordinations
+                  </Button>
+                </div>
+                {error && <div>{error.message}</div>}
+                {latitude && longitude && lon && lat &&
+                <Form.Text className="text-muted">
+                  Coordinations saved: latitude: {latitude} longitude: {longitude}
+                </Form.Text>}
+              </div>
+            )}
+          />
           <br />
           <br />
         </Form.Group>
