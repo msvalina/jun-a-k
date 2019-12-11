@@ -38,15 +38,15 @@ class Report(models.Model):
         blank=True,
         )
     lon = models.DecimalField(
-        # Precission https://stackoverflow.com/a/30711177 up to 10 cm
+        # Precission https://stackoverflow.com/a/30711177 up to 10 cm with 6 decimalplaces
         max_digits=9,
-        decimal_places=6,
+        decimal_places=7,
         blank=True,
         null=True,
         )
     lat = models.DecimalField(
         max_digits=9,
-        decimal_places=6,
+        decimal_places=7,
         blank=True,
         null=True,
         )
