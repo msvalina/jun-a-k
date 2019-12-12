@@ -17,6 +17,7 @@ django-exiffield = "*"
 django-rest-framework = "*"
 django-filter = "*"
 django-extensions = "*"
+django-enum-choices = "*"
 
 [requires]
 python_version = "3.6"

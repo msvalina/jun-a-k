@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6f90396f3e84573c088272a9f916a78cafb6be50fed2ffb46ab20442496ea587"
+            "sha256": "9c14a872c0995ec36ac8cf1e3393f100c70b9a8afa5366b1e748169dfe02909e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -44,6 +44,14 @@
             ],
             "index": "pypi",
             "version": "==3.0"
+        },
+        "django-enum-choices": {
+            "hashes": [
+                "sha256:01cf01188e409daa3e376c60b4c8e1eea89f1742bb49b45a7a50cf613baf9d40",
+                "sha256:4d04852ac879cb3b74490441d8f55e6d7d243b71c352f449b76186cacbe786d3"
+            ],
+            "index": "pypi",
+            "version": "==2.1.1"
         },
         "django-exiffield": {
             "hashes": [
@@ -107,17 +115,16 @@
         },
         "graphql-relay": {
             "hashes": [
-                "sha256:0e94201af4089e1f81f07d7bd8f84799768e39d70fa1ea16d1df505b46cc6335",
-                "sha256:75aa0758971e252964cb94068a4decd472d2a8295229f02189e3cbca1f10dbb5",
-                "sha256:7fa74661246e826ef939ee92e768f698df167a7617361ab399901eaebf80dce6"
+                "sha256:870b6b5304123a38a0b215a79eace021acce5a466bf40cd39fa18cb8528afabb",
+                "sha256:ac514cb86db9a43014d7e73511d521137ac12cf0101b2eaa5f0a3da2e10d913d"
             ],
-            "version": "==2.0.0"
+            "version": "==2.0.1"
         },
         "jsonfield2": {
             "hashes": [
-                "sha256:39610a8345b6fc71b45825d177b678b3d7fa9140c60cc488cf82bd1a35367a2b"
+                "sha256:baddc916f30fb4fd9e2b68bcbd8d20c5db4466b79588f0ccc3959961f0e9b568"
             ],
-            "version": "==3.0.3"
+            "version": "==3.1.0"
         },
         "pillow": {
             "hashes": [
@@ -383,7 +390,6 @@
         },
         "pycparser": {
             "hashes": [
-                "sha256:27a5c873277f250dcabaae4f776f4dbb49ba4d49a683311f3a365a2cdd021b89",
                 "sha256:a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
             ],
             "version": "==2.19"

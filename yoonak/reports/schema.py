@@ -1,20 +1,16 @@
 from graphene import Argument, Field, ID, ObjectType, Schema
-from graphene import Connection, ConnectionField, Node, Int
+from graphene import Connection, ConnectionField, Node, Int, String
+from graphene import Enum
 from graphene_django.filter import DjangoFilterConnectionField
 from graphene_django import DjangoObjectType
-from .models import Report
+from .models import Report, Status
 from .filters import ReportFilter
-from .mutations import ReportCreate, ReportDelete
+from .mutations import ReportCreate, ReportDelete, StatusEnum
 from .types import ReportType
 
-class Report_Node_Type(DjangoObjectType):
+class ReportConnection(Connection):
     class Meta:
-        model = Report
-        interfaces = (Node, )
-
-class Report_Connection(Connection):
-    class Meta:
-        node = Report_Node_Type
+        node = ReportType
     count = Int()
 
     # pylint: disable=no-self-argument

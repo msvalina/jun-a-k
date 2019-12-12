@@ -1,12 +1,14 @@
 import base64
 from django.core.files.base import ContentFile
-from graphene import Boolean, Field, ID, String, DateTime, Float
+from graphene import Boolean, Field, ID, String, DateTime, Float, Enum
 from graphene import InputObjectType, Mutation
 from rest_framework import serializers
-from reports.models import Report
+from django_enum_choices.serializers import EnumChoiceField
+from .models import Report, Status
 from .types import ReportType
 
 class ReportSerializer(serializers.ModelSerializer):
+    status = EnumChoiceField(Status)
     class Meta:
         model = Report
         fields = (
@@ -17,7 +19,11 @@ class ReportSerializer(serializers.ModelSerializer):
             'location',
             'lon',
             'lat',
+            'status',
         )
+
+
+StatusEnum = Enum.from_enum(Status)
 
 class ReportInputType(InputObjectType):
     #created_at = DateTime()
@@ -26,6 +32,7 @@ class ReportInputType(InputObjectType):
     location = String()
     lon = Float()
     lat = Float()
+    status = StatusEnum()
 
 class ReportCreate(Mutation):
     class Arguments:

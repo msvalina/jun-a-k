@@ -1,11 +1,19 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from enum import Enum
+from django_enum_choices.fields import EnumChoiceField
 
 from uuid import uuid4
 import datetime
 import os
 
 # Create your models here.
+
+class Status(Enum):
+    WAITING_CONFIRMATION = "Waiting Confirmation"
+    CONFIRMED = "Confirmed"
+    CLEANED = "Cleaned"
+    WONT_CLEAN = "Wont Clean"
 
 
 def image_direcotry_path_uuid(instance, filename):
@@ -39,13 +47,13 @@ class Report(models.Model):
         )
     lon = models.DecimalField(
         # Precission https://stackoverflow.com/a/30711177 up to 10 cm with 6 decimalplaces
-        max_digits=9,
+        max_digits=10,
         decimal_places=7,
         blank=True,
         null=True,
         )
     lat = models.DecimalField(
-        max_digits=9,
+        max_digits=10,
         decimal_places=7,
         blank=True,
         null=True,
@@ -54,6 +62,7 @@ class Report(models.Model):
         max_length=50,
         blank=True,
     )
+    status = EnumChoiceField(enum_class=Status , default=Status.WAITING_CONFIRMATION)
 
 
     class Meta:
