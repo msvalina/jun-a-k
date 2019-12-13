@@ -62,7 +62,14 @@ class Report(models.Model):
         max_length=50,
         blank=True,
     )
-    status = EnumChoiceField(enum_class=Status , default=Status.WAITING_CONFIRMATION)
+    status = EnumChoiceField(
+        enum_class=Status,
+        default=Status.WAITING_CONFIRMATION,
+        # https://github.com/graphql-python/graphene-django/issues/474
+        # This doesn't work: empty choice field, but will not remove for now
+        blank=True,
+        null=True,
+    )
 
 
     class Meta:

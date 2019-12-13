@@ -64,6 +64,8 @@ class ReportDelete(Mutation):
 
 def base64_file(data, name=None):
     # TODO: This should be regex validation
+    if data == None:
+        return None
     if not ';base64,' or not 'data:' in data:
         return None
     _format, _img_str = data.split(';base64,')
