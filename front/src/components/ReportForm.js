@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
+import { Redirect } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import styled from "styled-components";
@@ -15,7 +16,9 @@ export default function ReportForm(props) {
   const [lon, setLon] = useState(null);
   const [lat, setLat] = useState(null);
   const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("");
   const [image, setImage] = useState(props.cameraPhoto);
+  const [redirect, setRedirect] = useState(false);
 
   //const [createReport, { data }] = useMutation(CREATE_REPORT, {
   const [createReport] = useMutation(CREATE_REPORT, {
@@ -24,7 +27,8 @@ export default function ReportForm(props) {
       lon,
       lat,
       image,
-      description
+      description,
+      status,
     }
   });
 
@@ -36,14 +40,12 @@ export default function ReportForm(props) {
         lon,
         lat,
         image,
-        description
+        description,
+        "status": "CONFIRMED"
       }
     });
-    setLocation("");
-    setLon(null);
-    setLat(null);
-    setImage("");
-    setDescription("");
+
+    setRedirect(true);
   };
 
   let cameraPhotoView;
@@ -65,6 +67,9 @@ export default function ReportForm(props) {
         </div>
       </LinkContainer>
     );
+  }
+  if (redirect) {
+    return <Redirect to="/reports" />;
   }
 
   return (
@@ -109,7 +114,10 @@ export default function ReportForm(props) {
           <br />
           <Geolocation
             lazy
-            onSuccess={( position ) => { setLat(position.coords.latitude); setLon(position.coords.longitude); }}
+            onSuccess={position => {
+              setLat(position.coords.latitude);
+              setLon(position.coords.longitude);
+            }}
             render={({
               fetchingPosition,
               position: { coords: { latitude, longitude } = {} } = {},
@@ -117,20 +125,24 @@ export default function ReportForm(props) {
               getCurrentPosition
             }) => (
               <div>
-                <Form.Label className="label">
-                  Click here to send us
-                </Form.Label>
+                <Form.Label className="label">Click here to send us</Form.Label>
                 <br />
                 <div className="centering">
-                  <Button size="lg" variant="light" onClick={getCurrentPosition}>
+                  <Button
+                    size="lg"
+                    variant="light"
+                    onClick={getCurrentPosition}
+                  >
                     GPS Coordinations
                   </Button>
                 </div>
                 {error && <div>{error.message}</div>}
-                {latitude && longitude && lon && lat &&
-                <Form.Text className="text-muted">
-                  Coordinations saved: latitude: {latitude} longitude: {longitude}
-                </Form.Text>}
+                {latitude && longitude && lon && lat && (
+                  <Form.Text className="text-muted">
+                    Coordinations saved: latitude: {latitude} longitude:{" "}
+                    {longitude}
+                  </Form.Text>
+                )}
               </div>
             )}
           />
