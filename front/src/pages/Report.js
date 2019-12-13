@@ -7,8 +7,9 @@ import styled from "styled-components";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
+import TimeAgo from "react-timeago";
 
-import  DeleteReport  from '../containers/DeleteReport';
+import DeleteReport from "../containers/DeleteReport";
 
 import heroImageSmall from "../assets/images/boy-junak-small.jpeg";
 
@@ -20,6 +21,7 @@ export const GET_REPORT_DETAILS = gql`
       createdAt
       description
       location
+      status
     }
   }
 `;
@@ -52,21 +54,34 @@ export default function Report() {
     );
   }
   return (
-      <CardStyle>
-        {data.report && (
-          <Card key={data.report.id} bg="dark" className="card-extra">
-            <Card.Img variant="top" src={data.report.image ? url + data.report.image : defaultImage} />
-            <Card.Body>
-              <Card.Title>
-                {data.report.location} {data.report.id}
-              </Card.Title>
-              <Card.Text>{data.report.description}</Card.Text>
-              <Button variant="light">Do something</Button>
-              <DeleteReport reportId={data.report.id} />
-            </Card.Body>
-          </Card>
-        )}
-      </CardStyle>
+    <CardStyle>
+      {data.report && (
+        <Card key={data.report.id} bg="dark" className="card-extra">
+          <Card.Img
+            variant="top"
+            src={data.report.image ? url + data.report.image : defaultImage}
+          />
+          <Card.Body>
+            <Card.Title>
+              Report #{data.report.id} - {data.report.location}
+            </Card.Title>
+            <Card.Text>{data.report.description}</Card.Text>
+            <div className="space-between-positions">
+              <Button variant="light" className="flex-item">
+                Show Location on Map
+              </Button>
+              <DeleteReport className="flex-item" reportId={data.report.id} />
+            </div>
+          </Card.Body>
+          <Card.Footer className="text-muted space-between-positions">
+            <div className="flex-item">Status: {data.report.status}</div>
+            <div className="flex-item">
+              Reported: <TimeAgo date={data.report.createdAt} />
+            </div>
+          </Card.Footer>
+        </Card>
+      )}
+    </CardStyle>
   );
 }
 
@@ -83,5 +98,15 @@ const CardStyle = styled.div`
     margin-bottom: 30px;
     width: 100%;
     /* width: 600px; */
+  }
+
+  .space-between-positions {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .flex-item {
+    display: flex;
   }
 `;

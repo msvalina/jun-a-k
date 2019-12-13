@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 import { LinkContainer } from "react-router-bootstrap";
+import TimeAgo from "react-timeago";
 
 import heroImageSmall from "../assets/images/boy-junak-small.jpeg";
 
@@ -26,6 +27,7 @@ const GET_REPORTS = gql`
           createdAt
           description
           location
+          status
         }
       }
     }
@@ -55,16 +57,25 @@ export default function Reports() {
         data.reports.edges &&
         data.reports.edges.map(edge => (
           <Card key={edge.node.id} bg="dark" className="card-extra">
-            <LinkContainer exact to={`/report/${edge.node.id}`}>
-              <Card.Body>
-                <Card.Img variant="top" src={edge.node.image ? url + edge.node.image : defaultImage } />
-                <Card.Title>
-                  {edge.node.location} {edge.node.id}
-                </Card.Title>
-                <Card.Text>{edge.node.description}</Card.Text>
-                <Button variant="light">Do something</Button>
-              </Card.Body>
-            </LinkContainer>
+            <Card.Img
+              variant="top"
+              src={edge.node.image ? url + edge.node.image : defaultImage}
+            />
+            <Card.Body>
+              <Card.Title>
+                Report #{edge.node.id} - {edge.node.location}
+              </Card.Title>
+              <Card.Text>{edge.node.description}</Card.Text>
+              <LinkContainer exact to={`/report/${edge.node.id}`}>
+                <Button variant="light">Show More</Button>
+              </LinkContainer>
+            </Card.Body>
+            <Card.Footer className="text-muted space-between-positions">
+              <div className="flex-item">Status: {edge.node.status}</div>
+              <div className="flex-item">
+                Reported: <TimeAgo date={edge.node.createdAt} />
+              </div>
+            </Card.Footer>
           </Card>
         ))}
       {data.reports &&
@@ -113,5 +124,15 @@ const CardStyle = styled.div`
     margin-bottom: 30px;
     width: 100%;
     /* width: 600px; */
+  }
+
+  .space-between-positions {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .flex-item {
+    display: flex;
   }
 `;
