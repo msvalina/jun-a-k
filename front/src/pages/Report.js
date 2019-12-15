@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -22,6 +24,8 @@ export const GET_REPORT_DETAILS = gql`
       description
       location
       status
+      lat
+      lon
     }
   }
 `;
@@ -67,8 +71,12 @@ export default function Report() {
             </Card.Title>
             <Card.Text>{data.report.description}</Card.Text>
             <div className="space-between-positions">
-              <Button variant="light" className="flex-item">
-                Show Location on Map
+              <Button
+              variant="light"
+              className="flex-item"
+              href={'https://www.google.com/maps/search/?api=1&query=' + data.report.lat + ',' + data.report.lon}>
+                <FontAwesomeIcon icon={faMapMarkerAlt} className="fa-1x" />
+                <span> Show Location</span>
               </Button>
               <DeleteReport className="flex-item" reportId={data.report.id} />
             </div>
@@ -91,7 +99,7 @@ const CardStyle = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 600px;
-  width: 550px;
+  width: 95vw;
   flex-grow: 1;
 
   .card-extra {

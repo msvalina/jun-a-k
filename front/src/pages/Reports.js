@@ -129,7 +129,7 @@ const CardStyle = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 600px;
-  width: 550px;
+  width: 90vw;
   flex-grow: 1;
 
   .card-extra {
