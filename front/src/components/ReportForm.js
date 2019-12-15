@@ -28,7 +28,7 @@ export default function ReportForm(props) {
       lat,
       image,
       description,
-      status,
+      status
     }
   });
 
@@ -41,7 +41,7 @@ export default function ReportForm(props) {
         lat,
         image,
         description,
-        "status": "CONFIRMED"
+        status: "CONFIRMED"
       }
     });
 
