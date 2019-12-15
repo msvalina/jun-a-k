@@ -18,7 +18,7 @@ export default function DeleteReport({ reportId }) {
   });
 
   return data && data.reportDelete && !data.reportDelete.ok ? (
-    <p data-testid="message">Failed to delete report {reportId}</p>
+    <p data-testId="message">Failed to delete report {reportId}</p>
   ) : (
     <Button onClick={deleteReport} >
       Delete Report

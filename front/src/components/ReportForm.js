@@ -48,6 +48,17 @@ export default function ReportForm(props) {
     setRedirect(true);
   };
 
+  if (redirect) {
+    return (
+      <Redirect push
+        to={{
+          pathname: "/reports",
+          state: { referer: "/" }
+        }}
+      />
+    );
+  }
+
   let cameraPhotoView;
   if (props.cameraPhoto) {
     cameraPhotoView = (
@@ -67,9 +78,6 @@ export default function ReportForm(props) {
         </div>
       </LinkContainer>
     );
-  }
-  if (redirect) {
-    return <Redirect to="/reports" />;
   }
 
   return (
@@ -133,7 +141,7 @@ export default function ReportForm(props) {
                     variant="light"
                     onClick={getCurrentPosition}
                   >
-                    GPS Coordinations
+                    GPS Location
                   </Button>
                 </div>
                 {error && <div>{error.message}</div>}

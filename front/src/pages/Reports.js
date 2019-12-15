@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
@@ -34,11 +34,23 @@ const GET_REPORTS = gql`
   }
 `;
 
-export default function Reports() {
-  const { data, loading, error, fetchMore } = useQuery(GET_REPORTS);
+
+export default function Reports(props) {
+  const { data, loading, error, fetchMore, refetch} = useQuery(GET_REPORTS);
+  const [reRender, setReRender] = useState(false);
 
   const url = window.API_MEDIA_URL;
   const defaultImage = heroImageSmall;
+
+  if (
+    props.location.state &&
+    props.location.state.referer &&
+    props.location.state.referer === "/"
+  ) {
+    console.log("refetching")
+    refetch();
+    window.scrollTo(0, 0);
+  }
 
   if (loading)
     return (
