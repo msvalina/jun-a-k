@@ -44,7 +44,7 @@ export const UploadButton = props => {
         <label htmlFor="file-upload" className="btn btn-light btn-lg ">
           <div>{props.label}</div>
         </label>
-        <input id="file-upload" type="file" onChange={handleChange} />
+        <input id="file-upload" type="file" accept="image/webp, image/*" capture="environment" onChange={handleChange} />
       </div>
     );
   }
