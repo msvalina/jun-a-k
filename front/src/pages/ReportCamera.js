@@ -25,17 +25,21 @@ class ReportCamera extends React.Component{
         this.setState({ dataUri });
     }
     onCameraStop() {
-        console.log("On camera stop")
+        console.log("On camera stop");
+    }
+
+    onRetry() {
+        this.setState({ dataUri: null });
     }
 
     render() {
         return (
             <Row>
-                <Col md={6}>
+                <Col>
                     <div className="photoApp">
                         {
                             (this.state.dataUri)
-                            ? <ImagePreview dataUri={this.state.dataUri} />
+                            ? <ImagePreview dataUri={this.state.dataUri} onRetry={this.onRetry} />
                             : <Camera
                                 onTakePhotoAnimationDone = {this.onTakePhotoAnimationDone}
                                 isImageMirror = {false}

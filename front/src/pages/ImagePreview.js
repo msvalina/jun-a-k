@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 import { LinkContainer } from "react-router-bootstrap";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera } from "@fortawesome/free-solid-svg-icons";
 
 const Styles = styled.div`
   .demo-image-preview {
@@ -27,9 +25,18 @@ const Styles = styled.div`
     width: 100vw;
     height: 100vh;
   }
+
+  .space-between-positions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .flex-item {
+    display: flex;
+  }
 `;
 
-export const ImagePreview = ({ dataUri, isFullscreen }) => {
+export const ImagePreview = ({ dataUri, onRetry, isFullscreen }) => {
   let classNameFullscreen = isFullscreen ? "demo-image-preview-fullscreen" : "";
 
   return (
@@ -37,25 +44,27 @@ export const ImagePreview = ({ dataUri, isFullscreen }) => {
       <div className={"demo-image-preview " + classNameFullscreen}>
         <img src={dataUri} alt="preview" />
       </div>
-      <LinkContainer to={{
-        pathname: "/",
-        state: {
-          cameraPhoto: dataUri
-        }
-      }}>
-        <Button size="lg" variant="light" type="">
-          Use Picture
-        </Button>
-      </LinkContainer>
-
-      <LinkContainer to="/photo">
-        <div className="centering">
-          <FontAwesomeIcon icon={faCamera} className="fa-3x" />
+      <div className="space-between-positions">
+        <LinkContainer
+          className="flex-item"
+          to={{
+            pathname: "/",
+            state: {
+              cameraPhoto: dataUri
+            }
+          }}
+        >
           <Button size="lg" variant="light" type="">
-            Take a Picture
+            Use Picture
           </Button>
-        </div>
-      </LinkContainer>
+        </LinkContainer>
+
+        <LinkContainer className="flex-item" to="/photo">
+          <Button size="lg" variant="light" type="" onClick={onRetry}>
+            Retry
+          </Button>
+        </LinkContainer>
+      </div>
     </Styles>
   );
 };
