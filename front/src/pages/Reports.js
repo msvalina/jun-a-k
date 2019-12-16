@@ -51,7 +51,7 @@ export default function Reports(props) {
     props.location.state.referer === "/"
   ) {
     console.log("refetching")
-    refetch();
+    setTimeout(() => { refetch(); }, 500);
     window.scrollTo(0, 0);
     props.location.state.referer = "/reports";
   }
