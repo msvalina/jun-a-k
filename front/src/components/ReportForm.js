@@ -16,7 +16,7 @@ export default function ReportForm(props) {
   const [lon, setLon] = useState(null);
   const [lat, setLat] = useState(null);
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("CONFIRMED");
   const [image, setImage] = useState(props.cameraPhoto);
   const [redirect, setRedirect] = useState(false);
 
@@ -41,11 +41,13 @@ export default function ReportForm(props) {
         lat,
         image,
         description,
-        status: "CONFIRMED"
+        status
       }
     });
 
     setRedirect(true);
+    // Just that we don't get compiler warning for never used var
+    setStatus("CONFIRMED");
   };
 
   if (redirect) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
@@ -36,8 +36,11 @@ const GET_REPORTS = gql`
 
 
 export default function Reports(props) {
-  const { data, loading, error, fetchMore, refetch} = useQuery(GET_REPORTS);
-  const [reRender, setReRender] = useState(false);
+  const { data, loading, error, fetchMore, refetch, networkStatus} = useQuery(
+    GET_REPORTS,
+    {
+      notifyOnNetworkStatusChange: true,
+    });
 
   const url = window.API_MEDIA_URL;
   const defaultImage = heroImageSmall;
@@ -50,6 +53,7 @@ export default function Reports(props) {
     console.log("refetching")
     refetch();
     window.scrollTo(0, 0);
+    props.location.state.referer = "/reports";
   }
 
   if (loading)
@@ -62,6 +66,13 @@ export default function Reports(props) {
     console.log(error);
     return <p>ERROR </p>;
   }
+  if (networkStatus === 4)
+    return (
+      <Spinner animation="border" role="status">
+        <span className="sr-only">Refetching...</span>
+      </Spinner>
+    );
+
 
   return (
     <CardStyle>
