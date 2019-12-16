@@ -34,24 +34,29 @@ const GET_REPORTS = gql`
   }
 `;
 
-
 export default function Reports(props) {
-  const { data, loading, error, fetchMore, refetch, networkStatus} = useQuery(
+  const { data, loading, error, fetchMore, refetch, networkStatus } = useQuery(
     GET_REPORTS,
     {
-      notifyOnNetworkStatusChange: true,
-    });
+      notifyOnNetworkStatusChange: true
+    }
+  );
 
   const url = window.API_MEDIA_URL;
   const defaultImage = heroImageSmall;
 
   if (
-    props.location.state &&
-    props.location.state.referer &&
-    props.location.state.referer === "/"
+    (props.location.state &&
+      props.location.state.referer &&
+      props.location.state.referer === "/") ||
+    (props.location.state &&
+      props.location.state.referer &&
+      props.location.state.referer.includes("/report/"))
   ) {
-    console.log("refetching")
-    setTimeout(() => { refetch(); }, 500);
+    console.log("refetching");
+    setTimeout(() => {
+      refetch();
+    }, 500);
     window.scrollTo(0, 0);
     props.location.state.referer = "/reports";
   }
@@ -72,7 +77,6 @@ export default function Reports(props) {
         <span className="sr-only">Refetching...</span>
       </Spinner>
     );
-
 
   return (
     <CardStyle>
