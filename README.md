@@ -4,6 +4,14 @@ Jun(a)k - yoonak
 In Croatian **junak** pronouncing **yoonak** means hero. Be a yoonak. Report when you find garbage in the wild.
 We will make sure to collect it!
 
+Screencast
+----------
+
+WIP screencast
+
+![](https://media.giphy.com/media/hTBhgjuWbNMbwNppz2/giphy.gif)
+![](https://media.giphy.com/media/kGcc1500etmkDBx6yb/giphy.gif)
+
 Apps
 ----
 
@@ -20,7 +28,8 @@ Backend Tech
 Frontend Tech
 -------------
 
-1. To be decided
+1. React
+2. Appolo
 
 Report wild garbage be Yoonak
 -----------------------------
